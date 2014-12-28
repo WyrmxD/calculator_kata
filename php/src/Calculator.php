@@ -3,11 +3,12 @@
 class Calculator {
 	
 	static function add($string){
-		$values = split(',', $string);
+		$numbers = split(',', $string);
 		
-		if (count($values) > 1) {
-			return (intval($values[0]) + intval($values[1]) );
+		$total = 0;
+		foreach ($numbers as $number) {
+			$total += $number;
 		}
-		return intval($values[0]);
+		return $total;
 	}
 }
