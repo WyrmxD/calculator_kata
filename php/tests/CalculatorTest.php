@@ -22,7 +22,11 @@ class CalculatorTest extends PHPUnit_Framework_TestCase {
 		$this->assertEquals(6, Calculator::add('1,2,,3'));
 	}
 
-	public function testAdd_with_new_lines(){
+	public function testAdd_with_new_lines_and_commas(){
 		$this->assertEquals(6, Calculator::add("1\n2,3"));
+	}
+
+	public function testAdd_suport_different_separators(){
+		$this->assertEquals(3, Calculator::add("//;\n1;2"));	
 	}
 }
