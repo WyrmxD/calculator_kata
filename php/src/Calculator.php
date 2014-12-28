@@ -12,12 +12,9 @@ class Calculator {
 			throw new InvalidArgumentException("Negative numbers not allowed", 1);
 		}
 		
-		$total = 0;
-		foreach ($numbers as $number) {
-			$total += $number;
-		}
-		return $total;
+		return self::calc_total($numbers);
 	}
+
 
 	private function splitter($string) {
 
@@ -36,4 +33,13 @@ class Calculator {
 		}
 		return true;
 	}
+	
+	private function calc_total($numbers) {
+		$total = 0;
+		foreach ($numbers as $number) {
+			$total += $number;
+		}
+		return $total;
+	}
+
 }
