@@ -9,4 +9,8 @@ class CalculatorTest extends PHPUnit_Framework_TestCase {
 	public function testAdd_one_number(){
 		$this->assertEquals(1, Calculator::add('1'));	
 	}
+
+	public function testAdd_two_numbers(){
+		$this->assertEquals(3, Calculator::add('1,2'));
+	}
 }
