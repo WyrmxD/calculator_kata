@@ -1,10 +1,13 @@
 <?php
 
 class Calculator {
+
+	private static $default_separators = array(",", "\s");
 	
 	static function add($string) {
 
 		$numbers = self::splitter($string);
+
 		if (!self::positive($numbers)) {
 			throw new InvalidArgumentException("Negative numbers not allowed", 1);
 		}
@@ -17,11 +20,12 @@ class Calculator {
 	}
 
 	private function splitter($string) {
-		$separators = '/[,|\s]/';
+
+		$separators = '[' . implode("|", self::$default_separators) . ']';
 		if (strstr($string, "//")){
-			$separators = "/" . substr($string, 2, 1) . "/";
+			$separators = substr($string, 2, 1);
 		}
-		return preg_split($separators, $string);
+		return preg_split("/" . $separators . "/", $string);
 	}
 
 	private function positive($numbers) {
