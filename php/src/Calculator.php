@@ -4,7 +4,10 @@ class Calculator {
 	
 	static function add($string) {
 
-		$numbers = self::splitter($string);			
+		$numbers = self::splitter($string);
+		if (!self::positive($numbers)) {
+			throw new InvalidArgumentException("Negative numbers not allowed", 1);
+		}
 		
 		$total = 0;
 		foreach ($numbers as $number) {
@@ -19,5 +22,14 @@ class Calculator {
 			$separators = "/" . substr($string, 2, 1) . "/";
 		}
 		return preg_split($separators, $string);
+	}
+
+	private function positive($numbers) {
+		foreach ($numbers as $number) {
+			if ($number < 0) {
+				return false;
+			}
+		}
+		return true;
 	}
 }

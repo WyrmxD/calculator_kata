@@ -27,6 +27,11 @@ class CalculatorTest extends PHPUnit_Framework_TestCase {
 	}
 
 	public function testAdd_supports_different_separators(){
-		$this->assertEquals(3, Calculator::add("//;\n1;2"));	
+		$this->assertEquals(3, Calculator::add("//;\n1;2"));
+	}
+
+	public function testAdd_negative_raise_error(){
+		$this->setExpectedException('InvalidArgumentException');
+		$this->assertEquals(3, Calculator::add("//;\n-1;2"));
 	}
 }
