@@ -4,10 +4,9 @@ class Calculator {
 	
 	static function add($string){
 		
+		$separators = '/[,|\s]/';
 		if (strstr($string, "//")){
 			$separators = "/" . substr($string, 2, 1) . "/";
-		} else {
-			$separators = '/[,|\s]/';
 		}
 		$numbers = preg_split($separators, $string);			
 		
