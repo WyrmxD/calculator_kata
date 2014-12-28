@@ -15,6 +15,14 @@ class CalculatorTest extends PHPUnit_Framework_TestCase {
 	}
 
 	public function testAdd_several_numbers(){
-		$this->assertEquals(6, Calculator::add('1,2,3'));	
+		$this->assertEquals(6, Calculator::add('1,2,3'));
+	}
+
+	public function testAdd_several_numbers_and_blanks(){
+		$this->assertEquals(6, Calculator::add('1,2,,3'));
+	}
+
+	public function testAdd_with_new_lines(){
+		$this->assertEquals(6, Calculator::add("1\n2,3"));
 	}
 }

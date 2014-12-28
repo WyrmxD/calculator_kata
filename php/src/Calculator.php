@@ -3,7 +3,8 @@
 class Calculator {
 	
 	static function add($string){
-		$numbers = split(',', $string);
+		$separators = '/[,|\s]/';
+		$numbers = preg_split($separators, $string);
 		
 		$total = 0;
 		foreach ($numbers as $number) {
